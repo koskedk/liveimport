@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>disable</Nullable>
+        <ImplicitUsings>disable</ImplicitUsings>
+        <UserSecretsId>dotnet-LiveImport.Archiver-D3DF6B53-A4ED-4D21-B616-94DA8724EAC9</UserSecretsId>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="MassTransit" Version="8.0.7" />
+        <PackageReference Include="MassTransit.RabbitMQ" Version="8.0.7" />
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\LiveImport.Contracts\LiveImport.Contracts.csproj" />
+    </ItemGroup>
+</Project>
