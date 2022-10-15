@@ -1,8 +1,10 @@
-using Automatonymous;
+using System;
+using LiveImport.Contracts;
+using MassTransit;
 
 namespace LiveImport.Core
 {
-    public class UploadStateMachine : AutomatonymousStateMachine<UploadState>
+    public class UploadStateMachine : MassTransitStateMachine<UploadState>
     {
         // State
         public State Uploaded { get; private set; }
@@ -53,6 +55,7 @@ namespace LiveImport.Core
             DuringAny(
                 When(Load).
                     Then(ctx=>ctx.Instance.ReportProgress(25,"Loading...")).
+                    Publish(context => new Vault{FileName = context.Saga.FileName,DateLocked = DateTime.Now}).
                     TransitionTo(Loaded)
             );
         }

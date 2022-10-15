@@ -1,4 +1,5 @@
 using LiveImport.Api;
+using LiveImport.Core;
 using MassTransit;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
@@ -15,6 +16,8 @@ var busSettings = builder.Configuration.GetSection(BusSettings.Key).Get<BusSetti
 
 builder.Services.AddMassTransit(x =>
 {
+    x.AddSagaStateMachine<UploadStateMachine, UploadState>()
+        .InMemoryRepository();
     x.UsingRabbitMq((context,cfg) =>
     {
         cfg.Host(busSettings.Host, busSettings.Vhost, h => {

@@ -17,6 +17,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\LiveImport.Contracts\LiveImport.Contracts.csproj" />
+      <ProjectReference Include="..\LiveImport.Core\LiveImport.Core.csproj" />
     </ItemGroup>
 
 </Project>
